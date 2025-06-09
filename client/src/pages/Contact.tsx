@@ -1,4 +1,62 @@
+import { useState } from "react";
+
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    service: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      // Create mailto link with form data
+      const subject = encodeURIComponent(`New Project Inquiry - ${formData.service || 'General'}`);
+      const body = encodeURIComponent(`
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Service Required: ${formData.service}
+
+Message:
+${formData.message}
+
+---
+Sent from Aakaara Architecture website contact form
+      `);
+      
+      const mailtoLink = `mailto:contact@aakaarastudio.in?subject=${subject}&body=${body}`;
+      window.location.href = mailtoLink;
+      
+      setSubmitStatus('success');
+      // Reset form after successful submission
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        service: '',
+        message: ''
+      });
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <div className="max-w-[1200px] mx-auto px-6 md:px-12 py-12 md:py-20">
@@ -58,7 +116,19 @@ const Contact = () => {
             <h2 className="text-aakaara-text font-playfair text-[24px] font-medium mb-6">
               Start Your Project
             </h2>
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {submitStatus === 'success' && (
+                <div className="p-4 bg-green-50 border border-green-200 rounded-md">
+                  <p className="text-green-700 text-[14px]">Thank you! Your message has been sent successfully.</p>
+                </div>
+              )}
+              
+              {submitStatus === 'error' && (
+                <div className="p-4 bg-red-50 border border-red-200 rounded-md">
+                  <p className="text-red-700 text-[14px]">There was an error sending your message. Please try again.</p>
+                </div>
+              )}
+
               <div>
                 <label htmlFor="name" className="block text-aakaara-text text-[14px] font-medium mb-2">
                   Full Name
@@ -67,6 +137,9 @@ const Contact = () => {
                   type="text"
                   id="name"
                   name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
                   className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-aakaara-brown focus:border-transparent"
                   placeholder="Your full name"
                 />
@@ -80,6 +153,9 @@ const Contact = () => {
                   type="email"
                   id="email"
                   name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
                   className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-aakaara-brown focus:border-transparent"
                   placeholder="your.email@example.com"
                 />
@@ -93,6 +169,8 @@ const Contact = () => {
                   type="tel"
                   id="phone"
                   name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-aakaara-brown focus:border-transparent"
                   placeholder="+91 XXXXX XXXXX"
                 />
@@ -105,14 +183,16 @@ const Contact = () => {
                 <select
                   id="service"
                   name="service"
+                  value={formData.service}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-aakaara-brown focus:border-transparent"
                 >
                   <option value="">Select a service</option>
-                  <option value="architecture">Architectural Planning</option>
-                  <option value="interior">Interior Design</option>
-                  <option value="landscape">Landscape Design</option>
-                  <option value="consultation">Consultation</option>
-                  <option value="other">Other</option>
+                  <option value="Architectural Planning">Architectural Planning</option>
+                  <option value="Interior Design">Interior Design</option>
+                  <option value="Landscape Design">Landscape Design</option>
+                  <option value="Consultation">Consultation</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
 
@@ -123,6 +203,9 @@ const Contact = () => {
                 <textarea
                   id="message"
                   name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
                   rows={5}
                   className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-aakaara-brown focus:border-transparent"
                   placeholder="Tell us about your project requirements..."
@@ -131,9 +214,10 @@ const Contact = () => {
 
               <button
                 type="submit"
-                className="w-full bg-aakaara-brown text-white py-3 px-6 rounded-md hover:bg-aakaara-dark-brown transition-colors duration-200 font-medium"
+                disabled={isSubmitting}
+                className="w-full bg-aakaara-brown text-white py-3 px-6 rounded-md hover:bg-aakaara-dark-brown transition-colors duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed hover-scale"
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>

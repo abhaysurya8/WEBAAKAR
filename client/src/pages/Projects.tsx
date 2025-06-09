@@ -1,3 +1,5 @@
+import { Link } from "wouter";
+
 const Projects = () => {
   const projects = [
     {
@@ -57,33 +59,45 @@ const Projects = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div key={index} className={`group cursor-pointer animate-slide-up hover-scale animation-delay-${index < 3 ? (index + 1) * 200 : 600}`}>
-              <div className="overflow-hidden mb-4 rounded-lg">
-                <img 
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-              </div>
-              <div className="space-y-2">
-                <div className="flex justify-between items-start">
-                  <h3 className="text-aakaara-text font-playfair text-[18px] font-medium leading-[24px]">
-                    {project.title}
-                  </h3>
-                  <span className="text-aakaara-text/60 text-[12px] font-normal">
-                    {project.type}
-                  </span>
+          {projects.map((project, index) => {
+            const slugs = [
+              "residence-sarjapur",
+              "villa-whitefield", 
+              "apartment-interior",
+              "corporate-office",
+              "landscape-garden",
+              "residential-complex"
+            ];
+            return (
+              <Link key={index} href={`/projects/${slugs[index]}`}>
+                <div className={`group cursor-pointer animate-slide-up hover-scale animation-delay-${index < 3 ? (index + 1) * 200 : 600}`}>
+                  <div className="overflow-hidden mb-4 rounded-lg">
+                    <img 
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex justify-between items-start">
+                      <h3 className="text-aakaara-text font-playfair text-[18px] font-medium leading-[24px]">
+                        {project.title}
+                      </h3>
+                      <span className="text-aakaara-text/60 text-[12px] font-normal">
+                        {project.type}
+                      </span>
+                    </div>
+                    <p className="text-aakaara-text/80 text-[14px] font-normal leading-[20px]">
+                      {project.location}
+                    </p>
+                    <p className="text-aakaara-text text-[14px] font-normal leading-[20px]">
+                      {project.description}
+                    </p>
+                  </div>
                 </div>
-                <p className="text-aakaara-text/80 text-[14px] font-normal leading-[20px]">
-                  {project.location}
-                </p>
-                <p className="text-aakaara-text text-[14px] font-normal leading-[20px]">
-                  {project.description}
-                </p>
-              </div>
-            </div>
-          ))}
+              </Link>
+            );
+          })}
         </div>
       </div>
 
