@@ -1,53 +1,53 @@
 const Projects = () => {
   const projects = [
     {
-      title: "Modern Residential Villa",
+      title: "Residence at Sarjapur",
       location: "Bangalore",
       type: "Architecture",
-      description: "A contemporary villa design that seamlessly blends modern aesthetics with traditional Indian elements.",
+      description: "A contemporary residential design featuring clean lines and sustainable materials in East Bangalore.",
       image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
-      title: "Corporate Office Interiors",
-      location: "Mumbai",
-      type: "Interior Design",
-      description: "Innovative workspace design promoting collaboration and productivity in a tech company headquarters.",
-      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      title: "Sustainable Garden Resort",
-      location: "Goa",
-      type: "Landscape Design",
-      description: "Eco-friendly resort design integrating natural landscapes with luxury hospitality experiences.",
-      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      title: "Heritage Home Renovation",
-      location: "Mysore",
+      title: "Villa at Whitefield",
+      location: "Bangalore", 
       type: "Architecture",
-      description: "Careful restoration and modernization of a century-old heritage property while preserving its character.",
+      description: "Modern villa design with traditional elements creating a perfect blend of contemporary and classic architecture.",
       image: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
-      title: "Boutique Hotel Interiors",
-      location: "Chennai",
-      type: "Interior Design",
-      description: "Luxury boutique hotel design featuring local art and craftsmanship in contemporary settings.",
-      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      title: "Apartment Interior Design",
+      location: "Bangalore",
+      type: "Interior Design", 
+      description: "Sophisticated apartment interiors featuring modern furnishing and optimal space utilization.",
+      image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
-      title: "Urban Rooftop Gardens",
-      location: "Delhi",
+      title: "Corporate Office Space",
+      location: "Bangalore",
+      type: "Interior Design",
+      description: "Professional office design promoting productivity and collaboration in a technology workspace.",
+      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      title: "Landscape Garden Design",
+      location: "Bangalore",
       type: "Landscape Design",
-      description: "Transforming urban rooftops into green sanctuaries with sustainable gardening solutions.",
+      description: "Sustainable garden design integrating native plants with modern landscape architecture principles.",
       image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      title: "Residential Complex",
+      location: "Bangalore",
+      type: "Architecture",
+      description: "Multi-unit residential development featuring sustainable design and community-focused spaces.",
+      image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     }
   ];
 
   return (
     <div className="min-h-screen bg-white">
       <div className="max-w-[1200px] mx-auto px-6 md:px-12 py-12 md:py-20">
-        <div className="mb-16">
+        <div className="mb-16 animate-fade-in">
           <h1 className="text-aakaara-text font-playfair text-[32px] md:text-[40px] leading-[40px] md:leading-[48px] font-normal mb-4">
             Our Projects
           </h1>
@@ -58,8 +58,8 @@ const Projects = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <div key={index} className="group cursor-pointer">
-              <div className="overflow-hidden mb-4">
+            <div key={index} className={`group cursor-pointer animate-slide-up hover-scale animation-delay-${index < 3 ? (index + 1) * 200 : 600}`}>
+              <div className="overflow-hidden mb-4 rounded-lg">
                 <img 
                   src={project.image}
                   alt={project.title}

@@ -37,8 +37,8 @@ const Pricing = () => {
     },
     {
       service: "High-Res 3D Visuals",
-      elegance: { included: true, note: "Online preview for decision making" },
-      elite: { included: false, note: "" },
+      elegance: { included: false, note: "" },
+      elite: { included: true, note: "Online preview for decision making" },
     },
   ];
 

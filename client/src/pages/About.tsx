@@ -4,16 +4,16 @@ const About = () => {
       <div className="max-w-[1200px] mx-auto px-6 md:px-12 py-12 md:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
           {/* Profile Image */}
-          <div className="flex justify-center lg:justify-start">
+          <div className="flex justify-center lg:justify-start animate-slide-in-left">
             <img
               src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400"
               alt="Ar. Shivangi Shivakumar"
-              className="w-80 h-80 rounded-full object-cover shadow-lg"
+              className="w-80 h-80 rounded-full object-cover shadow-lg hover-scale"
             />
           </div>
 
           {/* About Content */}
-          <div className="space-y-6">
+          <div className="space-y-6 animate-slide-in-right">
             <h1 className="text-aakaara-text font-playfair text-[32px] md:text-[40px] leading-[40px] md:leading-[48px] font-normal">
               Crafting<br />
               Inspired<br />
@@ -36,24 +36,10 @@ const About = () => {
           </div>
         </div>
 
-        {/* Statistics */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          <div className="text-center p-6 bg-gray-50 rounded-lg">
-            <h4 className="text-4xl font-bold text-aakaara-brown mb-2 font-playfair">50+</h4>
-            <p className="text-aakaara-text text-[16px] font-normal">Projects Completed</p>
-          </div>
-          <div className="text-center p-6 bg-gray-50 rounded-lg">
-            <h4 className="text-4xl font-bold text-aakaara-brown mb-2 font-playfair">5+</h4>
-            <p className="text-aakaara-text text-[16px] font-normal">Years of Excellence</p>
-          </div>
-          <div className="text-center p-6 bg-gray-50 rounded-lg">
-            <h4 className="text-4xl font-bold text-aakaara-brown mb-2 font-playfair">10+</h4>
-            <p className="text-aakaara-text text-[16px] font-normal">Cities Served</p>
-          </div>
-        </div>
+
 
         {/* Our Philosophy */}
-        <div className="text-center max-w-4xl mx-auto">
+        <div className="text-center max-w-4xl mx-auto animate-fade-in animation-delay-400">
           <h2 className="text-aakaara-text font-playfair text-[28px] md:text-[32px] font-normal mb-6">
             Our Philosophy
           </h2>
