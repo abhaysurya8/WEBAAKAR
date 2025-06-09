@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@font-face {
+  font-family: 'Rigot Bold';
+  src: url('./fonts/rigot-bold.woff2') format('woff2'),
+       url('./fonts/rigot-bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -99,6 +107,10 @@
   
   .font-playfair {
     font-family: 'Playfair Display', serif;
+  }
+  
+  .font-rigot {
+    font-family: 'Rigot Bold', 'Playfair Display', serif;
   }
   
   .vertical-text {

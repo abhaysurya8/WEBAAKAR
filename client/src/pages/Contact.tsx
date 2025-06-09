@@ -4,7 +4,7 @@ const Contact = () => {
       <div className="max-w-[1200px] mx-auto px-6 md:px-12 py-12 md:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Contact Information */}
-          <div>
+          <div className="animate-slide-in-left">
             <h1 className="text-aakaara-text font-playfair text-[32px] md:text-[40px] leading-[40px] md:leading-[48px] font-normal mb-8">
               Get in Touch
             </h1>
@@ -54,7 +54,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-gray-50 p-8 rounded-lg">
+          <div className="bg-gray-50 p-8 rounded-lg animate-slide-in-right">
             <h2 className="text-aakaara-text font-playfair text-[24px] font-medium mb-6">
               Start Your Project
             </h2>

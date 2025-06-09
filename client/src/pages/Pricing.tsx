@@ -45,7 +45,7 @@ const Pricing = () => {
   return (
     <div className="min-h-screen bg-white">
       <div className="max-w-[1200px] mx-auto px-6 md:px-12 py-12 md:py-20">
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 animate-fade-in">
           <h1 className="text-aakaara-text font-playfair text-[32px] md:text-[40px] leading-[40px] md:leading-[48px] font-normal mb-4">
             Pricing Plans
           </h1>
@@ -55,7 +55,7 @@ const Pricing = () => {
           </p>
         </div>
 
-        <div className="bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200">
+        <div className="bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200 animate-slide-up animation-delay-200">
           {/* Header */}
           <div className="bg-aakaara-dark-brown text-aakaara-light-brown">
             <div className="grid grid-cols-3 gap-0">
@@ -107,15 +107,15 @@ const Pricing = () => {
           </div>
         </div>
 
-        <div className="text-center mt-12">
+        <div className="text-center mt-12 animate-fade-in animation-delay-400">
           <p className="text-aakaara-text text-[16px] font-normal mb-8">
             Ready to start your project? Contact us for a personalized consultation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-aakaara-dark-brown text-aakaara-light-brown px-8 py-3 rounded-md font-medium hover:bg-aakaara-brown transition-colors duration-200">
+            <button className="bg-aakaara-dark-brown text-aakaara-light-brown px-8 py-3 rounded-md font-medium hover:bg-aakaara-brown transition-colors duration-200 hover-scale">
               Get Started
             </button>
-            <button className="border border-aakaara-brown text-aakaara-brown px-8 py-3 rounded-md font-medium hover:bg-aakaara-brown hover:text-white transition-colors duration-200">
+            <button className="border border-aakaara-brown text-aakaara-brown px-8 py-3 rounded-md font-medium hover:bg-aakaara-brown hover:text-white transition-colors duration-200 hover-scale">
               Contact Us
             </button>
           </div>
