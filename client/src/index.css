@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -24,10 +24,10 @@
   --destructive-foreground: hsl(60, 9.1%, 97.8%);
   --ring: hsl(20, 14.3%, 4.1%);
   --radius: 0.5rem;
-  --aakaara-brown: hsl(20, 85%, 31%);
-  --aakaara-lavender: hsl(247, 100%, 94%);
-  --aakaara-light: hsl(247, 100%, 99%);
-  --aakaara-text: hsl(249, 11%, 43%);
+  --aakaara-brown: #7f6a4d;
+  --aakaara-dark-brown: #5a3a22;
+  --aakaara-light-brown: #d9c4b0;
+  --aakaara-text: #7f6a4d;
 }
 
 .dark {
@@ -77,15 +77,34 @@
     border-color: var(--aakaara-brown);
   }
   
-  .bg-aakaara-lavender {
-    background-color: var(--aakaara-lavender);
+  .bg-aakaara-dark-brown {
+    background-color: var(--aakaara-dark-brown);
   }
   
-  .bg-aakaara-light {
-    background-color: var(--aakaara-light);
+  .text-aakaara-dark-brown {
+    color: var(--aakaara-dark-brown);
+  }
+  
+  .bg-aakaara-light-brown {
+    background-color: var(--aakaara-light-brown);
+  }
+  
+  .text-aakaara-light-brown {
+    color: var(--aakaara-light-brown);
   }
   
   .text-aakaara-text {
     color: var(--aakaara-text);
+  }
+  
+  .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
+  
+  .vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    user-select: none;
   }
 }

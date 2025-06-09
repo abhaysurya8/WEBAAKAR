@@ -1,87 +1,63 @@
-import { Button } from "@/components/ui/button";
-import { Link } from "wouter";
-import { Compass, Palette, Sprout } from "lucide-react";
-
 const Home = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-white">
-      {/* Full-width Brown Header Strip */}
-      <div className="w-full aakaara-brown py-16 lg:py-24">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-7xl font-light text-white mb-6 leading-tight font-quicksand">
-            Crafting<br />
-            Inspired<br />
-            Spaces
+    <div className="min-h-screen bg-white">
+      <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-start px-6 md:px-12 py-12 md:py-20">
+        {/* Main Content */}
+        <div className="flex-1 pr-0 md:pr-20">
+          <h1 className="text-aakaara-text font-playfair text-[24px] md:text-[28px] leading-[32px] md:leading-[38px] font-normal mb-4">
+            Redefining Spaces with Expertise in Architecture, Interiors, and Landscape Design.
           </h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-            Transforming visions into architectural masterpieces that inspire, endure, and elevate everyday living.
+          <p className="text-aakaara-text text-[14px] md:text-[16px] leading-[20px] md:leading-[24px] font-normal mb-6 max-w-[600px]">
+            Crafting bespoke solutions that seamlessly blend functionality, aesthetics, and sustainability — across scales, climates, and cultures.
           </p>
+          <div className="text-aakaara-text text-[14px] md:text-[16px] leading-[20px] md:leading-[24px] font-normal max-w-[600px]">
+            <p className="mb-1">Our Services</p>
+            <ul className="list-disc list-inside space-y-1">
+              <li>
+                <span className="font-semibold">Architectural Planning</span><br />
+                Shaping spaces with purpose and vision.
+              </li>
+              <li>
+                <span className="font-semibold">Interior Design</span><br />
+                Creating interiors that seamlessly blend aesthetics and practicality.
+              </li>
+              <li>
+                <span className="font-semibold">Landscape Design</span><br />
+                Crafting sustainable landscapes that celebrate the natural context.
+              </li>
+            </ul>
+          </div>
         </div>
+
+        {/* Right Sidebar */}
+        <aside className="bg-aakaara-dark-brown w-[220px] mt-12 md:mt-0 flex flex-col justify-center items-center relative min-h-[400px]">
+          <div className="absolute top-6 left-4 text-aakaara-light-brown text-[14px] font-normal space-y-4">
+            <p>Architecture</p>
+            <p>Interior</p>
+            <p>Landscape</p>
+          </div>
+          <div className="absolute bottom-6 right-4 font-playfair text-[48px] font-normal vertical-text leading-[48px] select-none text-aakaara-light-brown">
+            aakaara
+          </div>
+        </aside>
       </div>
 
-      {/* Content Section */}
-      <div className="py-20 bg-aakaara-light">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-semibold text-aakaara-text mb-4">
-              Our Services
-            </h2>
-            <p className="text-lg text-aakaara-text max-w-3xl mx-auto">
-              Comprehensive architectural solutions tailored to inspire, endure, and elevate everyday living
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-6 bg-white/50 rounded-lg backdrop-blur-sm">
-              <div className="w-16 h-16 bg-aakaara-brown/10 rounded-lg flex items-center justify-center mx-auto mb-6">
-                <Compass className="w-8 h-8 text-aakaara-brown" />
-              </div>
-              <h3 className="text-xl font-semibold text-aakaara-brown mb-2">Architecture</h3>
-              <p className="text-aakaara-text">
-                Innovative architectural solutions tailored to your vision
-              </p>
-            </div>
-
-            <div className="text-center p-6 bg-white/50 rounded-lg backdrop-blur-sm">
-              <div className="w-16 h-16 bg-aakaara-brown/10 rounded-lg flex items-center justify-center mx-auto mb-6">
-                <Palette className="w-8 h-8 text-aakaara-brown" />
-              </div>
-              <h3 className="text-xl font-semibold text-aakaara-brown mb-2">Interior Design</h3>
-              <p className="text-aakaara-text">
-                Creating spaces that reflect your personality and lifestyle
-              </p>
-            </div>
-
-            <div className="text-center p-6 bg-white/50 rounded-lg backdrop-blur-sm">
-              <div className="w-16 h-16 bg-aakaara-brown/10 rounded-lg flex items-center justify-center mx-auto mb-6">
-                <Sprout className="w-8 h-8 text-aakaara-brown" />
-              </div>
-              <h3 className="text-xl font-semibold text-aakaara-brown mb-2">Landscape Design</h3>
-              <p className="text-aakaara-text">
-                Harmonizing natural beauty with architectural excellence
-              </p>
-            </div>
-          </div>
-
-          <div className="text-center mt-16">
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/about">
-                <Button className="aakaara-brown text-white px-8 py-3 font-semibold hover:bg-primary/90">
-                  Learn More About Us
-                </Button>
-              </Link>
-              <Link href="/pricing">
-                <Button
-                  variant="outline"
-                  className="border-2 border-aakaara-brown text-aakaara-brown px-8 py-3 font-semibold hover:bg-aakaara-brown hover:text-white"
-                >
-                  View Our Pricing
-                </Button>
-              </Link>
+      {/* Footer */}
+      <footer className="bg-aakaara-dark-brown text-aakaara-light-brown">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-12 py-8">
+          <h2 className="font-playfair text-[28px] md:text-[32px] leading-[38px] font-normal border-b border-aakaara-light-brown/30 pb-4 mb-6">
+            Ar. Shivangi Shivakumar
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-[14px] md:text-[16px] leading-[20px] md:leading-[24px] font-normal">
+            <div>+91 99726 81819</div>
+            <div>contact@aakaarastudio.in</div>
+            <div>
+              Nagasandra,<br />
+              Bangalore- 560073.
             </div>
           </div>
         </div>
-      </div>
+      </footer>
     </div>
   );
 };

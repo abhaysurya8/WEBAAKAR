@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
 
 const Navigation = () => {
   const [location] = useLocation();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   const isActive = (path: string) => {
@@ -18,62 +16,56 @@ const Navigation = () => {
   const navigationItems = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
+    { href: "/projects", label: "Projects" },
     { href: "/pricing", label: "Pricing" },
+    { href: "/contact", label: "Contact" },
   ];
 
   return (
-    <header className="w-full aakaara-brown text-white sticky top-0 z-50 shadow-lg">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold tracking-wide">
-          Aakaara
-        </Link>
-        
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-8">
-          {navigationItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`hover:text-gray-200 transition-colors duration-200 font-medium ${
-                isActive(item.href) ? "text-yellow-300" : ""
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+    <>
+      {/* Menu Toggle Button - Top Left Corner */}
+      <button
+        onClick={toggleMenu}
+        className="fixed top-6 left-6 z-50 flex flex-col space-y-1 group"
+        aria-label="Menu"
+      >
+        <span className={`block h-0.5 w-5 bg-black transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
+        <span className={`block h-0.5 w-5 bg-black transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
+        <span className={`block h-0.5 w-5 bg-black transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+      </button>
 
-        {/* Mobile Menu Button */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="md:hidden text-white hover:text-gray-200"
-          onClick={toggleMobileMenu}
-        >
-          {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </Button>
-      </div>
-
-      {/* Mobile Navigation */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden aakaara-brown border-t border-white/20">
-          <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
+      {/* Side Menu */}
+      <div className={`fixed top-0 left-0 h-full w-64 bg-white shadow-2xl transform transition-transform duration-300 ease-in-out z-40 ${
+        isMenuOpen ? 'translate-x-0' : '-translate-x-full'
+      }`}>
+        <div className="pt-20 px-8">
+          <nav className="space-y-6">
             {navigationItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`hover:text-gray-200 transition-colors duration-200 font-medium ${
-                  isActive(item.href) ? "text-yellow-300" : ""
+                className={`block text-lg font-medium transition-colors duration-200 ${
+                  isActive(item.href) 
+                    ? 'text-[#7f6a4d] font-semibold' 
+                    : 'text-gray-700 hover:text-[#7f6a4d]'
                 }`}
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}
               </Link>
             ))}
-          </div>
+          </nav>
         </div>
+      </div>
+
+      {/* Overlay */}
+      {isMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-25 z-30"
+          onClick={() => setIsMenuOpen(false)}
+        />
       )}
-    </header>
+    </>
   );
 };
 
